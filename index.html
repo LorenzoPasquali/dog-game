@@ -1,25 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <title>Tomimis Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/script.js" defer></script>
-    
-    <title>Timimis Game</title>
-    <div class="score" id="score">Score: 0</div>
 </head>
 <body>
-    
-    <div class="game-board" ontouchstart="jump()">
-        <div class="botao" onclick="window.location.reload();">Jogar novamente</div>
-        <img src="./images/fango.png" class="fango">
-        <img src="./images/miet.gif" class="miet">
-        <img src="./images/amanda.png" class="pipe">
-        
+
+    <div class="arcade-frame">
+        <header class="game-header">
+            <h1 class="game-title">Tomimis</h1>
+            <div class="score-container">
+                <div class="score-label">SCORE</div>
+                <div class="score" id="score">0000</div>
+            </div>
+            <div class="score-container best">
+                <div class="score-label">BEST</div>
+                <div class="score" id="best-score">0000</div>
+            </div>
+        </header>
+
+        <div class="game-board" id="gameBoard" ontouchstart="jump()">
+            <!-- Sky layers -->
+            <div class="sky-gradient"></div>
+            <div class="stars"></div>
+
+            <!-- Parallax clouds -->
+            <img src="./images/clouds.png" class="clouds clouds-back" alt="">
+            <img src="./images/clouds.png" class="clouds clouds-front" alt="">
+
+            <!-- Background food -->
+            <img src="./images/fango.png" class="fango" alt="">
+
+            <!-- Player -->
+            <img src="./images/miet.gif" class="miet" id="miet" alt="Tomimis">
+
+            <!-- Obstacle -->
+            <img src="./images/amanda.png" class="pipe" id="pipe" alt="Amanda">
+
+            <!-- Ground -->
+            <div class="ground"></div>
+            <div class="ground-detail"></div>
+
+            <!-- Start screen overlay -->
+            <div class="overlay" id="startOverlay">
+                <div class="overlay-content start-content">
+                    <img src="./images/mietii.gif" class="overlay-dog" alt="Tomimis">
+                    <p class="overlay-text">Pressione qualquer tecla<br>ou toque para jogar!</p>
+                </div>
+            </div>
+
+            <!-- Game over overlay -->
+            <div class="overlay hidden" id="gameOverOverlay">
+                <div class="overlay-content gameover-content">
+                    <img src="./images/gameover.png" class="overlay-gameover-img" alt="Game Over">
+                    <div class="final-score-box">
+                        <span class="final-label">SCORE</span>
+                        <span class="final-score" id="finalScore">0</span>
+                    </div>
+                    <button class="btn-restart" id="btnRestart">Jogar Novamente</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="game-footer">
+            <span>SPACE / TOUCH para pular</span>
+        </footer>
     </div>
 
+    <script src="./js/script.js"></script>
 </body>
-<script src="./js/script.js" defer></script>
 </html>
